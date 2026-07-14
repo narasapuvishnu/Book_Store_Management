@@ -1,0 +1,14 @@
+{
+  "name": "bookstore-management",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:server": "npm run dev --prefix Server",
+    "dev:client": "npm run dev --prefix Client",
+    "dev": "npx -y concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build:server": "npm install --prefix Server",
+    "build:client": "npm install --include=dev --production=false --prefix Client && npm run build --prefix Client",
+    "build": "npm run build:server && npm run build:client",
+    "start": "npm start --prefix Server"
+  }
+}
