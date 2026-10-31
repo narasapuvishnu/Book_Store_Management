@@ -169,7 +169,7 @@ const Uitem = ({ auth, addToCart }) => {
           <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', margin: '0.75rem 0' }}>
             <div>
               <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>Merchant Price</span>
-              <strong style={{ fontSize: '2.5rem', color: 'white', fontFamily: 'var(--font-heading)' }}>${book.price.toFixed(2)}</strong>
+              <strong style={{ fontSize: '2.5rem', color: 'white', fontFamily: 'var(--font-heading)' }}>₹{book.price.toFixed(2)}</strong>
             </div>
             <div style={{ borderLeft: '1px solid var(--border-color)', paddingLeft: '2rem' }}>
               <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>Availability</span>

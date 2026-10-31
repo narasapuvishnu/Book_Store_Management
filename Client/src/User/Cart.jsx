@@ -135,10 +135,10 @@ const Cart = ({ auth, cart, updateQuantity, removeFromCart, clearCart }) => {
 
                   <div style={{ textAlign: 'right', minWidth: '80px', marginLeft: '1rem' }}>
                     <strong style={{ fontSize: '1.1rem' }}>
-                      ${(item.price * item.quantity).toFixed(2)}
+                      ₹{(item.price * item.quantity).toFixed(2)}
                     </strong>
                     <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                      ${item.price.toFixed(2)} each
+                      ₹{item.price.toFixed(2)} each
                     </div>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ const Cart = ({ auth, cart, updateQuantity, removeFromCart, clearCart }) => {
               
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
                 <span style={{ color: 'var(--text-secondary)' }}>Subtotal</span>
-                <span>${totalAmount.toFixed(2)}</span>
+                <span>₹{totalAmount.toFixed(2)}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
                 <span style={{ color: 'var(--text-secondary)' }}>Shipping</span>
@@ -161,7 +161,7 @@ const Cart = ({ auth, cart, updateQuantity, removeFromCart, clearCart }) => {
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.25rem', fontWeight: 'bold', borderTop: '1px solid var(--border-color)', paddingTop: '1rem', marginBottom: '2rem' }}>
                 <span>Total</span>
-                <span>${totalAmount.toFixed(2)}</span>
+                <span>₹{totalAmount.toFixed(2)}</span>
               </div>
 
               {/* Checkout Form */}

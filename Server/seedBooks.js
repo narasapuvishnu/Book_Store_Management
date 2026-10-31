@@ -16,6 +16,7 @@ if (dns.setServers) {
 const Book = require('./models/Book');
 const Seller = require('./models/Seller');
 const User = require('./models/User');
+const MyOrder = require('./models/MyOrder');
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/BookStore';
 const uploadsDir = path.join(__dirname, 'uploads');
@@ -372,6 +373,8 @@ async function seed() {
       existing.stock = b.stock;
       existing.availability = true;
       existing.itemImage = b.filename;
+      existing.sellerId = seller._id;
+      existing.sellerName = seller.name;
       if (!existing.reviews || existing.reviews.length === 0) {
         existing.reviews = b.reviews.map((r, i) => {
           const revUser = users[i % users.length] || defaultUser;
@@ -428,6 +431,13 @@ async function seed() {
     await newBook.save();
     console.log(`Added book: "${b.title}" with ${bookReviews.length} reviews and avg rating ${avgRating}`);
   }
+
+  // Reassign any existing orders to the active store seller so customer orders appear in seller order management
+  const orderUpdateRes = await MyOrder.updateMany(
+    {},
+    { $set: { 'seller.sellerId': seller._id, 'seller.sellerName': seller.name } }
+  );
+  console.log(`Synced ${orderUpdateRes.modifiedCount} customer orders to seller: ${seller.name}`);
 
   const finalCount = await Book.countDocuments();
   console.log(`Catalog successfully updated! Total books in catalog: ${finalCount}`);

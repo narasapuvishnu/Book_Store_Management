@@ -124,7 +124,7 @@ const Home = () => {
                   <h3 style={{ fontSize: '1.25rem', marginBottom: '0.25rem', lineHeight: '1.3' }}>{featuredBooks[0].title}</h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.75rem' }}>by {featuredBooks[0].author}</p>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
-                    <span style={{ fontSize: '1.3rem', fontWeight: '800', color: 'white' }}>${featuredBooks[0].price.toFixed(2)}</span>
+                    <span style={{ fontSize: '1.3rem', fontWeight: '800', color: 'white' }}>₹{featuredBooks[0].price.toFixed(2)}</span>
                     <span style={{ fontSize: '0.85rem', color: '#fbbf24' }}>★ {featuredBooks[0].averageRating || 5.0}</span>
                   </div>
                   <Link to={`/products/${featuredBooks[0]._id}`} className="btn btn-primary" style={{ padding: '0.45rem 1rem', fontSize: '0.85rem', marginTop: '0.85rem' }}>
@@ -225,7 +225,7 @@ const Home = () => {
                 </div>
 
                 <div className="book-card-footer">
-                  <span className="book-card-price">${book.price.toFixed(2)}</span>
+                  <span className="book-card-price">₹{book.price.toFixed(2)}</span>
                   <Link to={`/products/${book._id}`} className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
                     View Details
                   </Link>
@@ -279,7 +279,7 @@ const Home = () => {
                 </div>
 
                 <div className="book-card-footer">
-                  <span className="book-card-price">${book.price.toFixed(2)}</span>
+                  <span className="book-card-price">₹{book.price.toFixed(2)}</span>
                   <Link to={`/products/${book._id}`} className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
                     View Details
                   </Link>

@@ -154,7 +154,7 @@ const Book = ({ auth }) => {
                 </select>
               </div>
               <div className="form-group" style={{ marginBottom: '0' }}>
-                <label htmlFor="price">Price ($)</label>
+                <label htmlFor="price">Price (₹)</label>
                 <input
                   type="number"
                   step="0.01"

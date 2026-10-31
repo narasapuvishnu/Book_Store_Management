@@ -80,7 +80,7 @@ const Shome = ({ auth }) => {
         </div>
         <div className="card glass stats-card">
           <span className="stats-label">Total Revenue</span>
-          <span className="stats-number" style={{ background: 'var(--gradient-cyan-purple)', WebkitBackgroundClip: 'text' }}>${revenue.toFixed(2)}</span>
+          <span className="stats-number" style={{ background: 'var(--gradient-cyan-purple)', WebkitBackgroundClip: 'text' }}>₹{revenue.toFixed(2)}</span>
         </div>
       </div>
 
@@ -108,7 +108,7 @@ const Shome = ({ auth }) => {
                     <td style={{ fontFamily: 'monospace', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{ord._id}</td>
                     <td style={{ fontWeight: '600' }}>{ord.bookDetails.title}</td>
                     <td>{ord.buyer.userName}</td>
-                    <td style={{ fontWeight: 'bold' }}>${ord.order.totalamount.toFixed(2)}</td>
+                    <td style={{ fontWeight: 'bold' }}>₹{ord.order.totalamount.toFixed(2)}</td>
                     <td>{new Date(ord.order.BookingDate).toLocaleDateString()}</td>
                     <td>
                       <span style={{

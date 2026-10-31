@@ -73,43 +73,6 @@ const Slogin = ({ login }) => {
         <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }} disabled={loading}>
           {loading ? 'Logging In...' : 'Log In As Seller'}
         </button>
-
-        {/* Quick Demo Credentials */}
-        <div style={{
-          marginTop: '1.5rem',
-          padding: '1rem',
-          borderRadius: 'var(--radius-md)',
-          background: 'rgba(6, 182, 212, 0.08)',
-          border: '1px solid rgba(6, 182, 212, 0.25)',
-          fontSize: '0.85rem'
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-            <span style={{ fontWeight: '700', color: 'var(--accent-cyan)' }}>⚡ Demo Seller Credentials</span>
-            <button
-              type="button"
-              onClick={() => {
-                setEmail('seller@bookstore.com');
-                setPassword('seller123');
-              }}
-              style={{
-                background: 'rgba(6, 182, 212, 0.2)',
-                border: 'none',
-                color: '#38bdf8',
-                padding: '0.2rem 0.6rem',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                fontSize: '0.75rem',
-                fontWeight: '600'
-              }}
-            >
-              Auto Fill
-            </button>
-          </div>
-          <div style={{ color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-            <div>Email: <strong style={{ color: 'white' }}>seller@bookstore.com</strong></div>
-            <div>Password: <strong style={{ color: 'white' }}>seller123</strong></div>
-          </div>
-        </div>
       </form>
       
       <p style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>

@@ -68,7 +68,7 @@ const Ahome = ({ auth }) => {
         </div>
         <div className="card glass stats-card" style={{ borderLeft: '3px solid var(--accent-cyan)' }}>
           <span className="stats-label">Revenue</span>
-          <span className="stats-number">${(s.totalRevenue || 0).toFixed(2)}</span>
+          <span className="stats-number">₹{(s.totalRevenue || 0).toFixed(2)}</span>
         </div>
       </div>
 

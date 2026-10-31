@@ -150,7 +150,7 @@ const OrderItem = ({ auth }) => {
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.1rem', marginTop: '0.25rem' }}>
               <span style={{ color: 'var(--text-secondary)' }}>Total Charged:</span>
-              <strong style={{ color: 'white' }}>${order.order.totalamount.toFixed(2)}</strong>
+              <strong style={{ color: 'white' }}>₹{order.order.totalamount.toFixed(2)}</strong>
             </div>
           </div>
         </div>

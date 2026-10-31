@@ -172,7 +172,7 @@ const MyProducts = ({ auth }) => {
               </div>
               
               <div className="book-card-footer">
-                <span className="book-card-price">${book.price.toFixed(2)}</span>
+                <span className="book-card-price">₹{book.price.toFixed(2)}</span>
                 <div style={{ display: 'flex', gap: '0.4rem' }}>
                   <Link to={`/seller/edit-book/${book._id}`} className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem' }}>
                     Edit

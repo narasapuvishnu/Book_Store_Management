@@ -101,7 +101,7 @@ const Uhome = ({ auth }) => {
                     <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Status: <strong style={{ color: 'var(--accent-primary)' }}>{ord.order.Delivery}</strong></span>
                   </div>
                   <div style={{ textAlign: 'right' }}>
-                    <span style={{ fontWeight: 'bold', display: 'block', fontSize: '0.95rem' }}>${ord.order.totalamount.toFixed(2)}</span>
+                    <span style={{ fontWeight: 'bold', display: 'block', fontSize: '0.95rem' }}>₹{ord.order.totalamount.toFixed(2)}</span>
                     <Link to={`/user/orders/${ord._id}`} style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textDecoration: 'underline' }}>Track Order</Link>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ const Uhome = ({ auth }) => {
                     <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>by {item.author}</span>
                   </div>
                   <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '0.25rem', alignItems: 'flex-end' }}>
-                    <span style={{ fontWeight: 'bold', fontSize: '0.95rem' }}>${item.price.toFixed(2)}</span>
+                    <span style={{ fontWeight: 'bold', fontSize: '0.95rem' }}>₹{item.price.toFixed(2)}</span>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       <Link to={`/products/${item._id}`} style={{ fontSize: '0.75rem', color: 'var(--accent-primary)', textDecoration: 'none', fontWeight: 'bold' }}>Buy</Link>
                       <button onClick={() => handleRemoveWishlist(item._id)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.75rem', color: 'var(--accent-rose)' }}>Remove</button>
@@ -172,7 +172,7 @@ const Uhome = ({ auth }) => {
                 <h3 className="book-card-title">{book.title}</h3>
                 <p className="book-card-author">by {book.author}</p>
                 <div className="book-card-footer">
-                  <span className="book-card-price">${book.price.toFixed(2)}</span>
+                  <span className="book-card-price">₹{book.price.toFixed(2)}</span>
                   <Link to={`/products/${book._id}`} className="btn btn-primary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
                     View Details
                   </Link>

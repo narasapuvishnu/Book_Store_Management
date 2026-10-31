@@ -116,7 +116,7 @@ const Products = () => {
           </div>
 
           <div className="form-group" style={{ marginBottom: 0 }}>
-            <label>Price Range ($)</label>
+            <label>Price Range (₹)</label>
             <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
               <input
                 type="number"
@@ -203,7 +203,7 @@ const Products = () => {
               </div>
 
               <div className="book-card-footer">
-                <span className="book-card-price">${book.price.toFixed(2)}</span>
+                <span className="book-card-price">₹{book.price.toFixed(2)}</span>
                 <Link to={`/products/${book._id}`} className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
                   View Details
                 </Link>

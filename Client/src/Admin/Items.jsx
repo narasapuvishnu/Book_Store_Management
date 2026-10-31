@@ -91,7 +91,7 @@ const Items = ({ auth }) => {
                       {book.genre}
                     </span>
                   </td>
-                  <td style={{ fontWeight: 'bold' }}>${book.price.toFixed(2)}</td>
+                  <td style={{ fontWeight: 'bold' }}>₹{book.price.toFixed(2)}</td>
                   <td>{book.stock} left</td>
                   <td style={{ color: 'var(--accent-cyan)' }}>{book.sellerName}</td>
                   <td>

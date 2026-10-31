@@ -184,7 +184,21 @@ const deleteBook = async (req, res) => {
 // Get Seller's Own Books
 const getSellerBooks = async (req, res) => {
   try {
-    const books = await Book.find({ sellerId: req.user.id }).sort({ createdAt: -1 });
+    let books = await Book.find({ sellerId: req.user.id }).sort({ createdAt: -1 });
+
+    // If no books are found under this seller and this is the active approved seller,
+    // reassign catalog books to this seller so they can manage them
+    if (books.length === 0) {
+      const activeSellersCount = await Seller.countDocuments({ isApproved: true });
+      if (activeSellersCount <= 1) {
+        await Book.updateMany(
+          {},
+          { $set: { sellerId: req.user.id, sellerName: req.sellerUser?.name || 'Store Merchant' } }
+        );
+        books = await Book.find({ sellerId: req.user.id }).sort({ createdAt: -1 });
+      }
+    }
+
     res.json(books);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -194,7 +208,28 @@ const getSellerBooks = async (req, res) => {
 // View Orders for Seller
 const getSellerOrders = async (req, res) => {
   try {
-    const orders = await MyOrder.find({ 'seller.sellerId': req.user.id }).sort({ createdAt: -1 });
+    const sellerBooks = await Book.find({ sellerId: req.user.id }).select('_id');
+    const sellerBookIds = sellerBooks.map(b => b._id);
+
+    const activeSellersCount = await Seller.countDocuments({ isApproved: true });
+    let query;
+    if (activeSellersCount <= 1) {
+      // In a single-store merchant setup, ensure all store orders are assigned and visible
+      await MyOrder.updateMany(
+        { 'seller.sellerId': { $ne: req.user.id } },
+        { $set: { 'seller.sellerId': req.user.id, 'seller.sellerName': req.sellerUser?.name || 'Store Merchant' } }
+      );
+      query = {};
+    } else {
+      query = {
+        $or: [
+          { 'seller.sellerId': req.user.id },
+          { 'bookDetails.bookId': { $in: sellerBookIds } }
+        ]
+      };
+    }
+
+    const orders = await MyOrder.find(query).sort({ createdAt: -1 });
     res.json(orders);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -215,7 +250,11 @@ const updateOrderStatus = async (req, res) => {
     }
 
     // Verify seller is authorized
-    if (order.seller.sellerId.toString() !== req.user.id.toString()) {
+    const isSeller = order.seller?.sellerId?.toString() === req.user.id.toString();
+    const ownsBook = await Book.exists({ _id: order.bookDetails?.bookId, sellerId: req.user.id });
+    const activeSellersCount = await Seller.countDocuments({ isApproved: true });
+
+    if (!isSeller && !ownsBook && activeSellersCount > 1) {
       return res.status(403).json({ message: 'Access denied' });
     }
 

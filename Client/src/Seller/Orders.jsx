@@ -103,7 +103,7 @@ const Orders = ({ auth }) => {
                     </div>
                   </td>
                   <td style={{ fontWeight: 'bold', color: 'var(--accent-cyan)' }}>
-                    ${ord.order.totalamount.toFixed(2)}
+                    ₹{ord.order.totalamount.toFixed(2)}
                   </td>
                   <td>
                     <span style={{

@@ -95,7 +95,7 @@ const MyOrders = ({ auth }) => {
 
                 <div>
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'block' }}>Paid Amount</span>
-                  <strong style={{ fontSize: '1.25rem', color: 'white' }}>${ord.order.totalamount.toFixed(2)}</strong>
+                  <strong style={{ fontSize: '1.25rem', color: 'white' }}>₹{ord.order.totalamount.toFixed(2)}</strong>
                 </div>
 
                 <Link to={`/user/orders/${ord._id}`} className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
