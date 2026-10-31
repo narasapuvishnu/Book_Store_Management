@@ -1,8 +1,16 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
+const dns = require('dns');
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const http = require('http');
+
+if (dns.setServers) {
+  try {
+    dns.setServers(['8.8.8.8', '1.1.1.1']);
+  } catch (e) {}
+}
 
 const Book = require('./models/Book');
 const Seller = require('./models/Seller');
@@ -315,11 +323,12 @@ async function seed() {
   await Book.updateMany({ stock: { $lte: 0 } }, { $set: { stock: 12, availability: true } });
 
   for (const b of sampleBooks) {
-    const existing = await Book.findOne({ title: b.title });
+    const existing = await Book.findOne({ title: { $regex: new RegExp(`^${b.title}$`, 'i') } });
     if (existing) {
-      console.log(`Book "${b.title}" already exists, ensuring stock and availability...`);
+      console.log(`Book "${b.title}" already exists, ensuring stock, cover and availability...`);
       existing.stock = b.stock;
       existing.availability = true;
+      existing.itemImage = b.filename;
       if (!existing.reviews || existing.reviews.length === 0) {
         existing.reviews = b.reviews.map((r, i) => {
           const revUser = users[i % users.length] || defaultUser;
@@ -376,10 +385,17 @@ async function seed() {
 
   const finalCount = await Book.countDocuments();
   console.log(`Catalog successfully updated! Total books in catalog: ${finalCount}`);
-  process.exit(0);
+  return finalCount;
 }
 
-seed().catch(err => {
-  console.error('Seed error:', err);
-  process.exit(1);
-});
+if (require.main === module) {
+  seed()
+    .then(() => process.exit(0))
+    .catch(err => {
+      console.error('Seed error:', err);
+      process.exit(1);
+    });
+}
+
+module.exports = seed;
+

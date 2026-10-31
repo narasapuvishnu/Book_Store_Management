@@ -26,6 +26,17 @@ app.use('/api/user', userRoutes);
 app.use('/api/seller', sellerRoutes);
 app.use('/api/admin', adminRoutes);
 
+// Database Seeding / Sync Endpoint (useful for production deployment)
+const seedBooks = require('./seedBooks');
+app.get('/api/seed', async (req, res) => {
+  try {
+    const totalCount = await seedBooks();
+    res.json({ success: true, message: `Database seeded successfully! Total books: ${totalCount}` });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../Client/dist')));
   app.get('*', (req, res) => {
