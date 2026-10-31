@@ -163,7 +163,7 @@ const sampleBooks = [
     price: 11.50,
     stock: 40,
     description: 'A poetic tale of a young prince who visits various planets in space, addressing themes of loneliness, friendship, love, and loss.',
-    imageUrl: 'https://images.unsplash.com/photo-1532012164546-f432f2e3edd4?w=500&q=80',
+    imageUrl: 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1367545443i/157993.jpg',
     filename: 'book-little-prince.jpg',
     reviews: [
       { rating: 5, comment: 'What is essential is invisible to the eye. Timeless lessons for all ages.' },
