@@ -157,7 +157,7 @@ const sampleBooks = [
     price: 12.99,
     stock: 22,
     description: 'The romantic clash between the opinionated Elizabeth Bennet and her proud beau, Mr. Darcy, is a splendid performance of civilized sparring.',
-    imageUrl: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500&q=80',
+    imageUrl: 'https://covers.openlibrary.org/b/id/8739161-L.jpg',
     filename: 'book-pride-prejudice.jpg',
     reviews: [
       { rating: 5, comment: 'The witty dialogue and character dynamics remain unmatched.' },
@@ -281,7 +281,7 @@ const sampleBooks = [
     price: 17.95,
     stock: 24,
     description: 'Alicia Berenson’s life is seemingly perfect. One evening she shoots her husband five times in the face and never speaks another word. A criminal psychotherapist becomes obsessed with uncovering her motive.',
-    imageUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&q=80',
+    imageUrl: 'https://covers.openlibrary.org/b/id/10520357-L.jpg',
     filename: 'book-silent-patient.jpg',
     reviews: [
       { rating: 5, comment: 'Did NOT see that twist coming! Read the entire second half in one sitting.' },
@@ -295,7 +295,7 @@ const sampleBooks = [
     price: 14.50,
     stock: 20,
     description: 'Louisa Clark is an ordinary girl living an exceedingly ordinary life. Will Traynor has lost the desire to live after a tragic accident. When Lou becomes his caregiver, their lives collide in unexpected ways.',
-    imageUrl: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500&q=80',
+    imageUrl: 'https://covers.openlibrary.org/b/id/8231856-L.jpg',
     filename: 'book-me-before-you.jpg',
     reviews: [
       { rating: 5, comment: 'Bring tissues! Heartbreaking and uplifting all at once.' },
