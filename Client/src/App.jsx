@@ -146,16 +146,16 @@ const App = () => {
             <Route path="/products/:id" element={<Uitem auth={auth} addToCart={addToCart} />} />
             
             {/* User Auth */}
-            <Route path="/login" element={auth ? <Navigate to="/" replace /> : <Login login={login} />} />
-            <Route path="/signup" element={auth ? <Navigate to="/" replace /> : <Signup login={login} />} />
+            <Route path="/login" element={auth && auth.role === 'user' ? <Navigate to="/user/dashboard" replace /> : <Login login={login} />} />
+            <Route path="/signup" element={auth && auth.role === 'user' ? <Navigate to="/user/dashboard" replace /> : <Signup login={login} />} />
             
             {/* Seller Auth */}
-            <Route path="/seller/login" element={auth ? <Navigate to="/seller/dashboard" replace /> : <Slogin login={login} />} />
-            <Route path="/seller/signup" element={auth ? <Navigate to="/seller/dashboard" replace /> : <Ssignup />} />
+            <Route path="/seller/login" element={auth && auth.role === 'seller' ? <Navigate to="/seller/dashboard" replace /> : <Slogin login={login} />} />
+            <Route path="/seller/signup" element={auth && auth.role === 'seller' ? <Navigate to="/seller/dashboard" replace /> : <Ssignup />} />
 
             {/* Admin Auth */}
-            <Route path="/admin/login" element={auth ? <Navigate to="/admin/dashboard" replace /> : <Alogin login={login} />} />
-            <Route path="/admin/signup" element={auth ? <Navigate to="/admin/dashboard" replace /> : <Asignup login={login} />} />
+            <Route path="/admin/login" element={auth && auth.role === 'admin' ? <Navigate to="/admin/dashboard" replace /> : <Alogin login={login} />} />
+            <Route path="/admin/signup" element={auth && auth.role === 'admin' ? <Navigate to="/admin/dashboard" replace /> : <Asignup login={login} />} />
 
             {/* Protected User Routes */}
             <Route path="/user/dashboard" element={<UserGuard><Uhome auth={auth} /></UserGuard>} />

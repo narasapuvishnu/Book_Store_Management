@@ -1,71 +1,161 @@
-# 📚 Book Store Management System
+# 📚 BookStore Management System
 
-A full-stack Book Store Management web application built with the MERN stack (MongoDB, Express, React, Node.js). The application offers a complete marketplace where Users can browse and purchase books, Sellers can list and manage their inventories, and Admins can moderate the platform.
+A modern, full-stack Book Store Marketplace and Management Web Application built with the **MERN Stack** (MongoDB, Express, React, Node.js) and bundled via **Vite**.
 
-### 🌐 Live Demo
-The application is deployed and live on Render:
-👉 **[Live App Link](https://book-store-management-o2k9.onrender.com)**
+The application provides a complete multi-role ecosystem where **Customers** discover, review, and buy literature; **Verified Merchants** list books, update stock dynamically, and fulfill orders; and **Platform Administrators** oversee operations, users, and catalog listings.
 
 ---
 
-## 🚀 Features
+## ✨ Key Features & Capabilities
 
-### 👤 User Panel
-* **Account Management**: Signup and login with JWT authentication.
-* **Browse Books**: View books, search, and check book details.
-* **Cart Management**: Add books to the cart, update quantities, and checkout.
-* **Order History**: Track past and current orders.
+### 🎨 Modern Aurora Glassmorphism UI
+- **Obsidian & Aurora Palette**: Styled with curated gradients, ambient lighting effects, and frosted glass containers (`backdrop-filter: blur(16px)`).
+- **Typography & Motion**: Powered by **Space Grotesk** and **Plus Jakarta Sans** with micro-animations, 3D floating hero spotlight cards, and image hover-zoom effects.
+- **Responsive Layout**: Designed for seamless browsing across desktops, tablets, and smartphones.
 
-### 💼 Seller Panel
-* **Dashboard**: Track books listed and orders received.
-* **Manage Listings**: Add new books (with cover image upload), update book details, and delete listings.
-* **Order Processing**: Manage and update the status of orders placed by users.
+### 👤 Customer Experience
+- **Authentication**: Secure Signup & Sign In powered by JWT tokens and bcrypt encryption.
+- **Smart Catalog Browsing**:
+  - Filter books across genres (Fiction, Non-Fiction, Science, Romance, Fantasy, Biography, History, Children).
+  - Search by title, author, or keyword.
+  - Price range sliders and multi-criteria sorting (Popularity, Latest, Price Low-to-High, Price High-to-Low).
+- **Customer Reviews & Feedback**:
+  - Interactive star ratings (1 to 5 stars).
+  - Detailed reader review testimonials with author badges and review counts.
+- **Shopping Cart & Checkout**:
+  - Real-time cart badge counter.
+  - Quantity adjustments, dynamic subtotal calculations, and shipping address checkout.
+- **Personal Wishlist & Order Tracking**:
+  - Save books to wishlist for future purchases.
+  - Track order progression (Pending → Shipped → Delivered) with visual step trackers.
 
-### 🔑 Admin Panel
-* **Dashboard**: Platform overview showing metrics of users, sellers, and books.
-* **Moderation**: View and manage all registered Users, Sellers, and Books.
-* **Security**: Admin-only route protection.
+### 🏪 Merchant / Seller Portal
+- **Seller Authentication**: Merchant registration with built-in Admin verification workflows.
+- **Demo Auto-Fill Access**: One-click quick login for testing (`seller@bookstore.com` / `seller123`).
+- **Real-Time Dynamic Stock Controls**:
+  - Inline `+` and `-` buttons on inventory cards to update book stock instantly in the database.
+- **Catalog Listings Management**:
+  - Add new book titles with image uploads (handled by Multer).
+  - Edit prices, stock quantity, synopsis, genre, and metadata.
+  - Delete obsolete listings.
+- **Merchant Orders Board**:
+  - View real-time orders placed by customers and update delivery status.
+
+### ⚡ Platform Administrator Panel
+- **Dashboard Overview**: Metrics tracking total platform revenue, registered users, approved merchants, and catalog count.
+- **User Management**: Inspect and manage registered buyers.
+- **Seller Approval System**: Approve or reject newly registered merchant accounts.
+- **Global Catalog Moderation**: Supervise all listed books and remove non-compliant listings.
 
 ---
 
 ## 🛠️ Technology Stack
 
-* **Frontend**: React, React Router v7, Axios, Vite, Vanilla CSS.
-* **Backend**: Node.js, Express.js.
-* **Database**: MongoDB (via Mongoose).
-* **Security & Authentication**: JWT (JSON Web Tokens), Bcrypt (password hashing).
-* **Storage**: Multer (handling file uploads for book covers).
+| Layer | Technologies |
+|---|---|
+| **Frontend** | React 19, React Router v7, Axios, Vite, Vanilla CSS3 (Custom Design System) |
+| **Backend** | Node.js, Express.js, RESTful APIs |
+| **Database** | MongoDB, Mongoose ODM |
+| **Authentication** | JSON Web Tokens (JWT), Bcrypt password hashing |
+| **File Handling** | Multer (Multipart book cover image storage) |
+| **Development** | Concurrently, Nodemon |
 
 ---
 
-## ⚙️ Local Setup Instructions
+## 🚀 Getting Started
 
-Follow these steps to run the project locally on your machine:
+Follow the instructions below to run the project locally on your machine.
 
-### 1. Clone the repository
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [MongoDB](https://www.mongodb.com/try/download/community) installed and running locally, or a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) URI
+
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/narasapuvishnu/Book_Store_Management.git
 cd Book_Store_Management
 ```
 
-### 2. Configure Environment Variables
-Create a `.env` file inside the `Server` directory:
-```env
-PORT=8000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
+### 2. Install Dependencies
+Install dependencies for the root orchestrator, backend server, and frontend client:
+```bash
+# Root dependencies
+npm install
+
+# Backend dependencies
+npm install --prefix Server
+
+# Frontend dependencies
+npm install --prefix Client
 ```
 
-### 3. Install Dependencies & Start
-From the project root directory, run the concurrent dev script:
+### 3. Configure Server Environment Variables
+Ensure a `.env` file exists inside the `Server/` folder:
+```env
+PORT=8000
+MONGO_URI=mongodb://127.0.0.1:27017/BookStore
+JWT_SECRET=super_secure_jwt_secret_token_12345
+```
+
+### 4. Seed Curated Books (Optional but Recommended)
+Populate the database with 18 curated bestselling titles across all genres with covers, reviews, and stock:
 ```bash
-# Install root packages and run both client and server locally
-npm install
+npm run seed
+```
+
+### 5. Start the Application
+Run both the Express API and Vite React frontend concurrently with a single command:
+```bash
 npm run dev
+```
+
+- **Frontend Client**: [http://localhost:5173](http://localhost:5173)
+- **Backend API Server**: [http://localhost:8000](http://localhost:8000)
+
+---
+
+## 🔑 Pre-Configured Demo Credentials
+
+For quick evaluation, you can log in directly using the credentials below:
+
+| Role | Email | Password | Access Portal |
+|---|---|---|---|
+| **Seller / Merchant** | `seller@bookstore.com` | `seller123` | [Seller Portal](http://localhost:5173/seller/login) *(has Auto Fill)* |
+| **Customer / Buyer** | `vamshi6218@gmail.com` | *(your password)* | [User Sign In](http://localhost:5173/login) |
+
+---
+
+## 📁 Project Architecture
+
+```
+Book_Store_Management/
+├── Client/                     # React + Vite Frontend
+│   ├── src/
+│   │   ├── Admin/              # Admin dashboard, users, sellers & books management
+│   │   ├── Components/         # Navigation, Hero Home, Footer
+│   │   ├── Seller/             # Merchant inventory, book editing, order processing
+│   │   ├── User/               # Catalog, product details, reviews, cart, orders
+│   │   ├── App.jsx             # Route definitions and auth state guards
+│   │   └── index.css           # Custom Aurora Glassmorphism design system
+│   ├── package.json
+│   └── vite.config.js
+│
+├── Server/                     # Node.js + Express Backend
+│   ├── config/                 # Database connection logic
+│   ├── controllers/            # Admin, Seller, and User controllers
+│   ├── middlewares/            # JWT auth guard & Multer image upload
+│   ├── models/                 # Mongoose schemas (Book, Seller, User, MyOrder, Admin)
+│   ├── routes/                 # Express API routes
+│   ├── uploads/                # Book cover image storage directory
+│   ├── seedBooks.js            # Automated catalog & reviews seeder
+│   ├── setupSeller.js          # Demo seller account provisioner
+│   └── server.js               # Express application entrypoint
+│
+├── package.json                # Root concurrent scripts
+└── README.md
 ```
 
 ---
 
-## 📦 Deployment Configuration
-* **Render**: Configured to install and build both the client and server concurrently using custom build scripts.
-* **Vercel**: Configured via `vercel.json` to host the frontend React app statically (`Client/dist`), ignoring the server-side directories to bypass build environment limitations.
+## 📜 License
+This project is open-source and available under the [MIT License](LICENSE).

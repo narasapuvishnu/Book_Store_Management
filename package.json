@@ -9,6 +9,7 @@
     "build:server": "npm install --prefix Server",
     "build:client": "npm install --include=dev --production=false --prefix Client && npm run build --prefix Client",
     "build": "npm run build:server && npm run build:client",
+    "seed": "node Server/seedBooks.js",
     "start": "npm start --prefix Server"
   }
 }
