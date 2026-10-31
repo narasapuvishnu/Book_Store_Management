@@ -1,8 +1,9 @@
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 require('dotenv').config();
 const mongoose = require('mongoose');
 const dns = require('dns');
 const fs = require('fs');
-const path = require('path');
 const https = require('https');
 const http = require('http');
 
@@ -301,6 +302,48 @@ const sampleBooks = [
       { rating: 5, comment: 'Bring tissues! Heartbreaking and uplifting all at once.' },
       { rating: 5, comment: 'An emotional rollercoaster with wonderfully written characters.' }
     ]
+  },
+  {
+    title: '1984',
+    author: 'George Orwell',
+    genre: 'Fiction',
+    price: 15.49,
+    stock: 25,
+    description: 'A gripping novel about surveillance, totalitarianism, and freedom in a dystopian future where Big Brother is always watching.',
+    imageUrl: 'https://covers.openlibrary.org/b/id/7222246-L.jpg',
+    filename: 'book-1984.jpg',
+    reviews: [
+      { rating: 5, comment: 'Chillingly prophetic and deeply thought provoking. A must read masterpiece.' },
+      { rating: 5, comment: 'One of the most important books of the twentieth century.' }
+    ]
+  },
+  {
+    title: 'The Alchemist',
+    author: 'Paulo Coelho',
+    genre: 'Fantasy',
+    price: 17.99,
+    stock: 30,
+    description: 'An inspiring journey of a young Andalusian shepherd named Santiago following his dreams, destiny, and the language of the universe.',
+    imageUrl: 'https://covers.openlibrary.org/b/isbn/9780062315007-L.jpg',
+    filename: 'book-alchemist.jpg',
+    reviews: [
+      { rating: 5, comment: 'A magical, uplifting fable that changes how you view life decisions and dreams.' },
+      { rating: 5, comment: 'Beautiful and simple prose packed with deep spiritual wisdom.' }
+    ]
+  },
+  {
+    title: 'The art of being alone',
+    author: 'Renuka',
+    genre: 'Fiction',
+    price: 18.20,
+    stock: 20,
+    description: 'A comforting and empowering guide to embracing solitude, self-discovery, and inner peace in a noisy world.',
+    imageUrl: 'https://covers.openlibrary.org/b/id/15052166-L.jpg',
+    filename: 'book-art-of-being-alone.jpg',
+    reviews: [
+      { rating: 5, comment: 'Warm, introspective, and beautifully comforting for anyone learning to enjoy their own company.' },
+      { rating: 5, comment: 'Transformative read on turning loneliness into strength and solitude.' }
+    ]
   }
 ];
 
@@ -342,6 +385,9 @@ async function seed() {
         });
         const sum = existing.reviews.reduce((acc, r) => acc + r.rating, 0);
         existing.averageRating = parseFloat((sum / existing.reviews.length).toFixed(1));
+      }
+      if (b.title.toLowerCase() === 'the art of being alone' && existing.price > 100) {
+        existing.price = b.price;
       }
       await existing.save();
       continue;
